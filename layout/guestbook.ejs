@@ -1,0 +1,65 @@
+<%
+page.layout = "guestbook"
+page.title = theme.guestbook.title || __('guestbook.title')
+page.subtitle = theme.guestbook.subtitle || __('guestbook.subtitle')
+page.banner_img = page.banner_img || theme.guestbook.banner_img
+page.banner_img_height = page.banner_img_height || theme.guestbook.banner_img_height
+page.banner_mask_alpha = page.banner_mask_alpha || theme.guestbook.banner_mask_alpha
+%>
+
+
+
+<article class="page-content">
+  <%- page.content %>
+
+  <%- inject_point('pageComments') %>
+</article>
+
+<% if (/<[^>]+? class="[^"]*?markdown-body[^"]*?"/gims.test(page.content)) { %>
+  <%- partial('_partials/markdown-plugins') %>
+<% } %>
+
+<% if (theme.waline.serverURL) { %>
+    <div id="waline"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#waline', function() {
+        Fluid.utils.createCssLink('https://unpkg.com/@waline/client@3.1.3/dist/waline.css')
+        Fluid.utils.createScript('https://unpkg.com/@waline/client@3.1.3/dist/waline.umd.js', function() {
+          var options = Object.assign(
+            <%- JSON.stringify(theme.waline || {}) %>,
+            {
+              el: '#waline',
+              serverURL: 'https://waline.305871230.xyz',
+              path: <%= theme.waline.path %>,
+              reaction: false,
+              lang: 'zh-CN',
+              search: false,
+              emoji: ["https://cdn.jsdelivr.net/gh/norevi/waline-blobcatemojis@1.0/blobs","https://cdn.jsdelivr.net/gh/norevi/blob-emoji-for-waline@2.0/blobs-gif","https://cdn.jsdelivr.net/gh/norevi/blob-emoji-for-waline@2.0/blobs-png"],
+              imageUploader: true,
+              dark: 'html[data-user-color-scheme="dark"]',
+              commentSorting: 'latest',
+              copyright: false,
+              placeholder: '无需登录，匿名评论。  \n来和作者叨叨两句呗~(邮箱填QQ，评论后即可显示QQ头像)',
+              avatar: 'retro',
+              avatarCDN: 'https://seccdn.libravatar.org/avatar/',
+              avatarForce: false,
+              wordLimit: 0,
+              pageSize: 100,
+              highlight: true,
+              commentSorting: 'latest',
+              
+              
+            }
+          )
+          Waline.init(options);
+          Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+            var imgSelector = '#waline .vcontent img:not(.vemoji)';
+            Fluid.plugins.imageCaption(imgSelector);
+            Fluid.plugins.fancyBox(imgSelector);
+          })
+        });
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  <% } %>
+  

@@ -3,12 +3,14 @@
   <script type="text/javascript">
     Fluid.utils.loadComments('#waline', function() {
       Fluid.utils.createCssLink('<%= url_join(theme.static_prefix.waline, 'waline.css') %>')
-      Fluid.utils.createScript('<%= url_join(theme.static_prefix.waline, 'waline.js') %>', function() {
+      Fluid.utils.createScript('<%= url_join(theme.static_prefix.waline, 'waline.umd.js') %>', function() {
         var options = Object.assign(
           <%- JSON.stringify(theme.waline || {}) %>,
           {
             el: '#waline',
-            path: <%= theme.waline.path %>
+            path: <%= theme.waline.path %>,
+            search: false,
+            copyright: false,
           }
         )
         Waline.init(options);

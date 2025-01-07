@@ -1,32 +1,32 @@
 <div class="beian">
   <span>
-    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+    <a href="https://icp.gov.moe/" target="_blank" rel="nofollow noopener">
       <%- theme.footer.beian.icp_text %>
     </a>
   </span>
-  <% if(theme.footer.beian.police_text) { %>
-    <% if(theme.footer.beian.police_code) { %>
+  <% if(theme.footer.beian.meng_text) { %>
+    <% if(theme.footer.beian.meng_code) { %>
       <span>
         <a
-          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=<%= theme.footer.beian.police_code %>"
+          href="https://icp.gov.moe/?keyword=<%= theme.footer.beian.meng_code %>"
           rel="nofollow noopener"
-          class="beian-police"
+          class="beian-meng"
           target="_blank"
         >
-          <% if(theme.footer.beian.police_icon) { %>
+          <% if(theme.footer.beian.meng_icon) { %>
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="<%= url_for(theme.footer.beian.police_icon) %>" alt="police-icon"/>
+            <img src="<%= url_for(theme.footer.beian.meng_icon) %>" alt="meng-icon"/>
           <% } %>
-          <span><%- theme.footer.beian.police_text %></span>
+          <span><%- theme.footer.beian.meng_text %></span>
         </a>
       </span>
     <% } else { %>
-      <span class="beian-police">
-        <% if(theme.footer.beian.police_icon) { %>
+      <span class="beian-meng">
+        <% if(theme.footer.beian.meng_icon) { %>
           <span style="visibility: hidden; width: 0">|</span>
-          <img src="<%= url_for(theme.footer.beian.police_icon) %>" alt="police-icon"/>
+          <img src="<%= url_for(theme.footer.beian.meng_icon) %>" alt="meng-icon"/>
         <% } %>
-        <span class="beian-police"><%- theme.footer.beian.police_text %></span>
+        <span class="beian-meng"><%- theme.footer.beian.meng_text %></span>
       </span>
     <% } %>
   <% } %>

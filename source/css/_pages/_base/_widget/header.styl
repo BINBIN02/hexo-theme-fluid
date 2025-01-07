@@ -24,7 +24,6 @@
 
     i
       font-size 0.875rem
-      line-height inherit
 
     i:only-child
       margin 0 .2rem
@@ -172,3 +171,21 @@
 
   #subtitle, .typed-cursor
     font-size 1.35rem
+
+.weather-plugin
+  @media (max-width: 992px)
+    display none
+  @media (min-width: 992px)
+    display block
+
+.navbar-title
+  outline none
+  --c lightseagreen
+  text-shadow 0 0 10px var(--c),0 0 20px var(--c),0 0 40px var(--c),0 0 80px var(--c),0 0 160px var(--c)
+  animation animate 5s linear infinite
+
+@keyframes animate{
+  to{
+      filter: hue-rotate(360deg)
+  }
+}  

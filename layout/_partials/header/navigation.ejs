@@ -1,9 +1,35 @@
 <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="<%= url_for() %>">
-      <strong><%= theme.navbar.blog_title || config.title %></strong>
+      <strong class="navbar-title"><%= theme.navbar.blog_title || config.title %></strong>
     </a>
-
+    <span class="weather-plugin"><div id="he-plugin-simple"></div></span>
+    <script>
+        WIDGET = {
+            "CONFIG": {
+    "modules": "0123",
+    "background": "5",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "FFFFFF",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 12px 10px",
+    "shadow": "1",
+    "language": "auto",
+    "borderRadius": "12",
+    "fixed": "false",
+    "vertical": "center",
+    "horizontal": "center",
+    "city": "CN101100101",
+    "key": "778bff8314f6418cbcc18f8a814a8416"
+  }
+        }
+    </script>
+    <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
